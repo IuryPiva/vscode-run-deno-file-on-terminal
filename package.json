@@ -41,5 +41,10 @@
 		"mocha": "^9.1.3",
 		"typescript": "^4.4.4",
 		"@vscode/test-electron": "^1.6.2"
-	}
+	},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/IuryPiva/vscode-open-folder-on-terminal"
+  },
+  "publisher": "IuryPiva"
 }
