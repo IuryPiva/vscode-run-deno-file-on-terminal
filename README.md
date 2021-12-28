@@ -1,4 +1,4 @@
-# open-folder-on-terminal README
+# run-deno-file-on-terminal README
 
 Open active editor file's folder on a terminal.
 
