@@ -2,44 +2,35 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from "vscode";
 
-function isTerminalOptions(
-  opts: vscode.TerminalOptions | vscode.ExtensionTerminalOptions,
-): opts is vscode.TerminalOptions {
-  return typeof (opts as vscode.TerminalOptions).cwd != "undefined";
-}
-
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
   // Use the console to output diagnostic information (console.log) and errors (console.error)
   // This line of code will only be executed once when your extension is activated
   console.log(
-    'Congratulations, your extension "run-deno-file-on-terminal" is now active!',
+    'Congratulations, your extension "run-deno-run" is now active!',
   );
+  let terminal: vscode.Terminal | null = null;
 
   // The command has been defined in the package.json file
   // Now provide the implementation of the command with registerCommand
   // The commandId parameter must match the command field in package.json
   let disposable = vscode.commands.registerCommand(
-    "run-deno-file-on-terminal.runCurrentDenoFileOnTerminal",
+    "run-deno-run.runCurrentDenoFileOnTerminal",
     () => {
-
       const currentFile = vscode.window.activeTextEditor?.document.fileName;
       if (currentFile) {
         const currentPath = currentFile.slice(0, currentFile.lastIndexOf("/"));
+        const fileName = currentFile.split("/").pop();
 
-        // TODO: reuse terminal if it is on the same cwd and no process running.
-        // for (const terminal of vscode.window.terminals) {
-        //   const opts = terminal.creationOptions;
-        //   if (isTerminalOptions(opts)) {
-        //     const { cwd } = opts;
-        //     if (cwd && typeof cwd === "string") {
-        //       console.log(cwd);
-        //     }
-        //   }
-        // }
+        if (!terminal || terminal.exitStatus) {
+          terminal = vscode.window.createTerminal({ name: "run deno, run!", cwd: currentPath });
+        }
 
-        vscode.window.createTerminal({ cwd: currentPath }).show();
+        terminal.show();
+        terminal.sendText(
+          `deno run -A --unstable ${fileName}`,
+        );
       }
     },
   );

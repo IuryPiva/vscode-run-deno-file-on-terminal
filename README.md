@@ -1,4 +1,4 @@
-# run-deno-file-on-terminal README
+# run-deno-run README
 
 Run current file on a new terminal with `deno run -a --unstable`.
 
