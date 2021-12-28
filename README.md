@@ -1,10 +1,10 @@
 # run-deno-file-on-terminal README
 
-Open active editor file's folder on a terminal.
+Run current file on a new terminal with `deno run -a --unstable`.
 
 ## Features
 
-Open active editor file's folder on a terminal.
+Run current file on a new terminal with `deno run -a --unstable`.
 
 ### 1.0.0
 
