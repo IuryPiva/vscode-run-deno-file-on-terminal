@@ -2,7 +2,8 @@
   "name": "run-deno-run",
   "displayName": "deno run ${file}",
   "description": "Run current file on a new terminal with `deno run -a --unstable`",
-  "version": "0.0.1",
+  "version": "0.1.0",
+  "icon": "run_deno_run.jpeg",
   "engines": {
     "vscode": "1.63.2"
   },
@@ -10,14 +11,19 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:run-deno-run.runCurrentDenoFileOnTerminal"
+    "onCommand:run-deno-run.runCurrentDenoFileOnTerminal",
+    "onCommand:run-deno-run.watchCurrentDenoFileOnTerminal"
   ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
         "command": "run-deno-run.runCurrentDenoFileOnTerminal",
-        "title": "Run current file on a new terminal with `deno run -a --unstable`."
+        "title": "Run current file on a new terminal with `deno run -A --unstable`."
+      },
+      {
+        "command": "run-deno-run.watchCurrentDenoFileOnTerminal",
+        "title": "Run and watch current file on a new terminal with `deno run -A --watch --unstable`."
       }
     ]
   },
