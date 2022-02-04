@@ -2,10 +2,10 @@
   "name": "run-deno-run",
   "displayName": "deno run ${file}",
   "description": "Run current file on a new terminal with `deno run -a --unstable`",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "icon": "run_deno_run.jpeg",
   "engines": {
-    "vscode": "1.63.2"
+    "vscode": "^1.0.0"
   },
   "categories": [
     "Other"
